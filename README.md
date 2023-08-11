@@ -51,7 +51,7 @@
   <!-- Work Experience Section -->
   <div class="section">
     <h2>Work Experience</h2>
-    <p><strong>Job Title:</strong> Your Job Title</p>
+    <p><strong>Job Title:</strong>Lecturer</p>
     <p><strong>Company:</strong> Company Name</p>
     <p><strong>Duration:</strong> Start Date - End Date</p>
     <p><strong>Responsibilities:</strong></p>
