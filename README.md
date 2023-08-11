@@ -34,7 +34,7 @@
   <!-- Personal Information Section -->
   <div class="section">
     <h2>Personal Information</h2>
-    <p><strong>Name:</strong> Your Name</p>
+    <p><strong>Name:</strong> Adeem Ali Anwar </p>
     <p><strong>Email:</strong> your.email@example.com</p>
     <p><strong>Phone:</strong> (123) 456-7890</p>
     <p><strong>Address:</strong> City, State, Country</p>
