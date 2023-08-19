@@ -1,0 +1,159 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Citations from Specific Person</title>
+</head>
+<body>
+    <h1>Citations from Specific Person</h1>
+    <div id="citations"></div>
+
+    <script>
+        const apiKey = 'YOUR_API_KEY'; // Replace with your SerpAPI key
+        const authorName = 'AUTHOR_NAME'; // Replace with the author's name
+
+        async function fetchCitations() {
+            try {
+                const response = await fetch(`https://serpapi.com/search.json?q=${authorName}&engine=google_scholar&api_key=${apiKey}`);
+                const data = await response.json();
+
+                if (data && data.citations) {
+                    const citationsContainer = document.getElementById('citations');
+                    citationsContainer.innerHTML = '';
+
+                    data.citations.forEach(citation => {
+                        const citationElement = document.createElement('p');
+                        citationElement.textContent = citation.title;
+                        citationsContainer.appendChild(citationElement);
+                    });
+                } else {
+                    console.error('Error fetching citations:', data);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+
+        fetchCitations(); // Call the function immediately when the page loads
+    </script>
+</body>
+</html> -->
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SerpAPI in JavaScript</title>
+</head>
+<body>
+    <h1>SerpAPI in JavaScript</h1>
+
+    <div id="myDiv"></div>
+
+    <script>
+        const apiKey = 'af2fceb8a91b0eb0600f19ff9a75b1f41f3bd67e3ad50e4556e9ea9072c7f48b'; // Replace with your SerpAPI API key
+        const authorId = 'Adeem Ali Anwar'; // Replace with the author_id you want to search for
+
+        const url = "https://serpapi.com/search.html?engine=google&q=Coffee&location=Austin%2C+Texas%2C+United+States&google_domain=google.com&gl=us&hl=en&api_key=af2fceb8a91b0eb0600f19ff9a75b1f41f3bd67e3ad50e4556e9ea9072c7f48b";
+
+        
+                const response = fetch(url);
+                const data = response.json();
+
+                var variableData = "This is variable data that we are loading into the div.";
+        var myDiv = document.getElementById("myDiv"); // Get the div element by its ID
+        myDiv.textContent = variableData; // Set the text content of the div
+                
+                if (data.author) {
+                    var myDiv = document.getElementById("myDiv"); // Get the div element by its ID
+                    myDiv.textContent = data.author; // Set the text content of the div
+                    // console.log(data.author);
+                } else {
+                    myDiv.textContent = "Error";
+                    console.error('Author data not found');
+                }
+        
+
+    
+    </script>
+</body>
+</html> -->
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Data from URL</title>
+</head>
+<body>
+    <h1>Data from URL</h1>
+    <div id="dataContainer"></div>
+
+    <script>
+        const url = 'https://serpapi.com/search.html?engine=google&q=Coffee&location=Austin%2C+Texas%2C+United+States&google_domain=google.com&gl=us&hl=en&api_key=af2fceb8a91b0eb0600f19ff9a75b1f41f3bd67e3ad50e4556e9ea9072c7f48b'; // Replace with the URL of the data you want to fetch
+
+        async function fetchData() {
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+
+                // Replace 'dataContainer' with the ID of your <div>
+                const dataContainer = document.getElementById('dataContainer');
+
+                // Update the content of the <div> with the fetched data
+                dataContainer.textContent = JSON.stringify(data, null, 2);
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+
+        // Call the fetchData function when the page loads
+        window.onload = fetchData;
+    </script>
+</body>
+</html> -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch Data from SerpAPI</title>
+</head>
+<body>
+    <h1>Data from SerpAPI</h1>
+    <div id="authorData"></div>
+
+    <script>
+        const authorId = 'Adee'; // Replace with your author_id
+        const apiKey = 'af2fceb8a91b0eb0600f19ff9a75b1f41f3bd67e3ad50e4556e9ea9072c7f48b'; // Replace with your API key
+
+        const url = `https://serpapi.com/search.json?engine=google_scholar_author&author_id=${authorId}&api_key=${apiKey}`;
+
+        async function fetchData() {
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+
+                // Replace 'authorData' with the ID of your <div>
+                const authorDataDiv = document.getElementById('authorData');
+
+                // Display the author data
+                authorDataDiv.textContent = JSON.stringify(data.author, null, 2);
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+
+        // Call the fetchData function when the page loads
+        window.onload = fetchData;
+    </script>
+</body>
+</html>
