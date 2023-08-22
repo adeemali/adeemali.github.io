@@ -125,35 +125,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fetch Data from SerpAPI</title>
+    <title>Citations from Google Scholar</title>
 </head>
 <body>
-    <h1>Data from SerpAPI</h1>
-    <div id="authorData"></div>
+    <h1>Citations from Google Scholar</h1>
+    <div id="citations"></div>
 
     <script>
-        const authorId = 'Adeem Ali Anwar'; // Replace with your author_id
-        const apiKey = 'af2fceb8a91b0eb0600f19ff9a75b1f41f3bd67e3ad50e4556e9ea9072c7f48b'; // Replace with your API key
+        const apiKey = '9377a603d80de79b7f529c939442e86799d420002d8086b892f16f69ce1465de'; // Replace with your SerpAPI API key
+        const authorName = 'Adeem_Ali_Anwar'; // Replace with the author's name
 
-        const url = `https://serpapi.com/search.json?engine=google_scholar_author&author_id=${authorId}&api_key=${apiKey}`;
+        const serpapiEndpoint = `http://serpapi.com/search.json?q=Adeem_Ali_Anwar&engine=google_scholar&api_key=9377a603d80de79b7f529c939442e86799d420002d8086b892f16f69ce1465de`;
 
-        async function fetchData() {
-            try {
-                const response = await fetch(url);
-                const data = await response.json();
+        document.write = fetch(serpapiEndpoint);  
+        // async function fetchCitations() {
+        //     try {
+        //         const response = await fetch(serpapiEndpoint);
+        //         const data = await response.json();
 
-                // Replace 'authorData' with the ID of your <div>
-                const authorDataDiv = document.getElementById('authorData');
+        //         if (data && data.citations) {
+        //             const citationsContainer = document.getElementById('citations');
+        //             citationsContainer.innerHTML = '';
 
-                // Display the author data
-                authorDataDiv.textContent = JSON.stringify(data.author, null, 2);
-            } catch (error) {
-                console.error('Error:', error);
-            }
-        }
+        //             data.citations.forEach(citation => {
+        //                 const citationElement = document.createElement('p');
+        //                 citationElement.textContent = citation.title;
+        //                 citationsContainer.appendChild(citationElement);
+        //             });
+        //         } else {
+        //             console.error('Error fetching citations:', data);
+        //         }
+        //     } catch (error) {
+        //         console.error('Error:', error);
+        //     }
+        // }
 
-        // Call the fetchData function when the page loads
-        window.onload = fetchData;
+        // fetchCitations(); // Call the function to fetch and display citations
     </script>
 </body>
 </html>
+
+
+
