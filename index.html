@@ -23,6 +23,16 @@
   <link href='https://fonts.googleapis.com/css?family=Oswald:700' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+  <script>
+    // Function to disable right-click
+    function disableRightClick(event) {
+        event.preventDefault(); // Prevent the default right-click behavior
+    }
+
+    // Add event listener to the document for right-click event
+    document.addEventListener('contextmenu', disableRightClick);
+</script>
+
 </head>
 
 <body>
