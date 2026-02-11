@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+
+<!--license
+    Plain-Academic by Vasilios Mavroudis
+    Released under the  Simplified BSD License/FreeBSD (2-clause) License.
+    https://github.com/mavroudisv/plain-academic
+-->
+
+<html lang="en">
+
+<head>
+  <title>Dr Adeem Ali Anwar</title>
+  <link rel="icon" type="image/x-icon" href="images/logo2.ico">
+  <meta charset="utf-8">
+  <meta name="author" content="Dr Adeem Ali Anwar">
+  <meta name="description" content="Personal website of Dr Adeem Ali Anwar">
+  <meta name="keywords" content="MLSys, outlier detection, automl, anomaly detection, Dr Adeem Ali Anwar">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <link href='https://fonts.googleapis.com/css?family=Oswald:700' rel='stylesheet' type='text/css'>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <script>
+    // Function to disable right-click
+    function disableRightClick(event) {
+      event.preventDefault(); // Prevent the default right-click behavior
+    }
+
+    // Add event listener to the document for right-click event
+    document.addEventListener('contextmenu', disableRightClick);
+  </script>
+
+  <link rel="canonical" href="https://adeemali.github/index.html">
+
+  <style>
+    :root {
+      --bg: #0b0f14;
+      --panel: #0f1520;
+      --text: #e7e7e7;
+      --muted: #a7b0bf;
+      --line: #2a3342;
+      --accent: #d8d8d8;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg) !important;
+      color: var(--text) !important;
+      font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace !important;
+    }
+
+    a {
+      color: var(--text);
+      text-decoration: none;
+      border-bottom: 1px dotted rgba(231, 231, 231, .35);
+    }
+
+    a:hover {
+      color: var(--text);
+      border-bottom-color: rgba(231, 231, 231, .85);
+      text-decoration: none;
+    }
+
+    /* Terminal shell */
+    .terminal-shell {
+      max-width: 1100px;
+      margin: 24px auto;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255, 255, 255, .03), rgba(255, 255, 255, 0));
+      box-shadow: 0 0 0 1px rgba(0, 0, 0, .3) inset;
+    }
+
+    .terminal-top {
+      padding: 18px 18px 10px 18px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .terminal-brand {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .pixel-logo {
+      width: 44px;
+      height: 44px;
+      border: 2px solid var(--text);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(4, 1fr);
+      gap: 3px;
+      padding: 6px;
+      opacity: .9;
+    }
+
+    .pixel-logo span {
+      background: transparent;
+      border: 1px solid rgba(231, 231, 231, .35);
+    }
+
+    .pixel-logo span.f {
+      background: rgba(231, 231, 231, .85);
+      border-color: rgba(231, 231, 231, .85);
+    }
+
+    .brand-lines {
+      line-height: 1.35;
+      font-size: 14px;
+    }
+
+    .brand-lines .line1 {
+      font-weight: 600;
+      letter-spacing: .3px;
+    }
+
+    .brand-lines .line2,
+    .brand-lines .line3 {
+      color: var(--muted);
+    }
+
+    .terminal-rule {
+      margin: 14px 0;
+      height: 1px;
+      background: var(--line);
+    }
+
+    .terminal-prompt {
+      padding: 10px 0 2px 0;
+      color: var(--text);
+      font-size: 14px;
+    }
+
+    .terminal-prompt:before {
+      content: "> ";
+      color: var(--text);
+      opacity: .95;
+    }
+
+    .terminal-prompt:after {
+      content: "_";
+      opacity: .9;
+      animation: blink 1.1s steps(1) infinite;
+    }
+
+    @keyframes blink {
+      50% {
+        opacity: 0;
+      }
+    }
+
+    /* Navbar terminal look */
+    .j_navbar.navbar {
+      background: transparent !important;
+      border: 0 !important;
+      margin: 0 !important;
+      border-top: 1px solid var(--line) !important;
+      border-bottom: 1px solid var(--line) !important;
+      border-radius: 0 !important;
+    }
+
+    .j_navbar .navbar-brand {
+      color: var(--text) !important;
+      font-weight: 600;
+      border-bottom: 0;
+    }
+
+    .j_navbar .navbar-nav>li>a {
+      color: var(--muted) !important;
+      border-bottom: 0;
+    }
+
+    .j_navbar .navbar-nav>li>a:hover {
+      color: var(--text) !important;
+      background: transparent !important;
+    }
+
+    .navbar-inverse .navbar-toggle {
+      border-color: var(--line) !important;
+    }
+
+    .navbar-inverse .navbar-toggle .icon-bar {
+      background: var(--text) !important;
+    }
+
+    /* Body grid */
+    .terminal-body {
+      padding: 18px;
+    }
+
+    .terminal-grid {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 18px;
+    }
+
+    @media (max-width: 992px) {
+      .terminal-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .terminal-panel {
+      border: 1px solid var(--line);
+      background: rgba(15, 21, 32, .55);
+      padding: 14px;
+    }
+
+    .heading {
+      word-wrap: break-word;
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 22px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .info-text {
+      margin-bottom: 10px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .info-text b {
+      color: var(--text);
+    }
+
+    .university-color {
+      color: var(--text) !important;
+    }
+
+    .link-list a {
+      margin-right: 5px;
+    }
+
+    .justified-text {
+      color: var(--muted);
+      text-align: left;
+    }
+
+    #myImage {
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, .04);
+      padding: 6px;
+    }
+
+    /* Skills */
+    .containerskills {
+      width: 100%;
+      background-color: rgba(255, 255, 255, .05);
+      border: 1px solid var(--line);
+    }
+
+    .skills {
+      text-align: left;
+      padding-top: 6px;
+      padding-bottom: 6px;
+      color: white;
+    }
+
+    .clock {
+      color: var(--muted);
+    }
+
+    .research1 {
+      width: 90%;
+      background-color: rgba(231, 231, 231, .55) !important;
+    }
+
+    .research2 {
+      width: 80%;
+      background-color: rgba(231, 231, 231, .55) !important;
+    }
+
+    .research3 {
+      width: 80%;
+      background-color: rgba(231, 231, 231, .55) !important;
+    }
+
+    .research4 {
+      width: 90%;
+      background-color: rgba(231, 231, 231, .55) !important;
+    }
+
+    .research5 {
+      width: 70%;
+      background-color: rgba(231, 231, 231, .55) !important;
+    }
+
+    .coding1 {
+      width: 90%;
+      background-color: rgba(231, 231, 231, .25) !important;
+    }
+
+    .coding2 {
+      width: 70%;
+      background-color: rgba(231, 231, 231, .25) !important;
+    }
+
+    .coding3 {
+      width: 60%;
+      background-color: rgba(231, 231, 231, .25) !important;
+    }
+
+    .skill1 {
+      width: 90%;
+      background-color: rgba(231, 231, 231, .15) !important;
+    }
+
+    .skill2 {
+      width: 80%;
+      background-color: rgba(231, 231, 231, .15) !important;
+    }
+
+    .skill3 {
+      width: 90%;
+      background-color: rgba(231, 231, 231, .15) !important;
+    }
+
+    /* Resource hub */
+    .resource-search {
+      margin: 15px 0;
+    }
+
+    .form-control {
+      background: rgba(255, 255, 255, .04) !important;
+      border: 1px solid var(--line) !important;
+      color: var(--text) !important;
+      border-radius: 0 !important;
+      box-shadow: none !important;
+    }
+
+    .form-control::placeholder {
+      color: rgba(167, 176, 191, .75);
+    }
+
+    .resource-card {
+      background: rgba(15, 21, 32, .55) !important;
+      border: 1px solid var(--line) !important;
+      border-radius: 0 !important;
+      padding: 12px 14px;
+      margin-bottom: 12px;
+    }
+
+    .resource-card h4 {
+      margin-top: 0;
+      margin-bottom: 6px;
+      color: var(--text) !important;
+      font-weight: 600;
+    }
+
+    .resource-meta {
+      color: var(--muted) !important;
+      font-size: 12px;
+      margin-bottom: 6px;
+    }
+
+    .resource-tag {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 0 !important;
+      background: rgba(231, 231, 231, .08) !important;
+      border: 1px solid var(--line);
+      color: var(--muted) !important;
+      font-size: 12px;
+      margin-left: 8px;
+    }
+
+    .resource-link a {
+      color: var(--text) !important;
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 1px dotted rgba(231, 231, 231, .35);
+    }
+
+    /* Footer */
+    .footer {
+      background: transparent !important;
+      color: var(--muted) !important;
+      text-align: left;
+      padding: 16px 18px;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .social-icons {
+      list-style: none;
+      padding: 0;
+      margin-top: 10px;
+    }
+
+    .social-icons li {
+      display: inline-block;
+      margin-right: 10px;
+    }
+
+    .social-icons a {
+      color: var(--muted) !important;
+      font-size: 20px;
+      text-decoration: none;
+      border-bottom: 0;
+    }
+
+    /* ===== Theme Toggle ===== */
+
+    .theme-toggle {
+    position: fixed;
+    top: 12px;
+    right: 14px;
+    z-index: 9999;
+    background: transparent;
+    border: 1px solid var(--line);
+    color: var(--text);
+    padding: 6px 10px;
+    font-size: 12px;
+    cursor: pointer;
+    }
+
+    .theme-toggle:hover {
+    background: rgba(255,255,255,.05);
+    }
+
+    /* Light mode variables */
+    body.light {
+    --bg: #f5f5f5;
+    --panel: #ffffff;
+    --text: #111;
+    --muted: #555;
+    --line: #ccc;
+    }
+
+    /* Panels in light mode */
+    body.light .terminal-panel,
+    body.light .resource-card {
+    background: #ffffff !important;
+    }
+
+    /* Inputs in light mode */
+    body.light .form-control {
+    background: #fff !important;
+    color: #111 !important;
+    }
+
+    /* Links in light mode */
+    body.light a {
+    color: #111;
+    }
+
+    /* Navbar text */
+    body.light .j_navbar .navbar-nav>li>a,
+    body.light .navbar-brand {
+    color:#111 !important;
+    }
+
+    /* Footer */
+    body.light .footer {
+    color:#555 !important;
+    }
+
+    
+
+  </style>
+</head>
+
+<body>
+    <button class="theme-toggle" onclick="toggleTheme()">☀ / 🌙</button>
+  <div class="terminal-shell">
+    <div class="terminal-top">
+      <div class="terminal-brand">
+        <div class="pixel-logo" aria-hidden="true">
+          <span class="f"></span><span></span><span></span><span class="f"></span>
+          <span></span><span class="f"></span><span class="f"></span><span></span>
+          <span></span><span class="f"></span><span class="f"></span><span></span>
+          <span class="f"></span><span></span><span></span><span class="f"></span>
+        </div>
+
+        <div class="brand-lines">
+          <div class="line1">Dr Adeem Ali Anwar</div>
+          <div class="line2">Higher Education Lecturer (IT) · Research · Teaching</div>
+          <div class="line3">adeemali.github (page)</div>
+        </div>
+      </div>
+
+      <div class="terminal-rule"></div>
+      <div class="terminal-prompt">Explore resources and profile</div>
+    </div>
+
+    <nav class="navbar navbar-inverse navbar-static-top j_navbar" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+
+          <a class="navbar-brand" href="#">A. A. Anwar</a>
+        </div>
+
+        <div class="collapse navbar-collapse " id="navbar-collapse">
+          <ul class="nav navbar-nav ">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html">Publications</a></li>
+            <li><a href="index.html">Experience</a></li>
+            <li><a href="index.html">Education</a></li>
+            <li><a href="index.html">Honors & Awards</a></li>
+            <li><a href="index.html">Computing Skills</a></li>
+            <li><a href="index.html">Services & Memberships</a></li>
+            <li><a href="index.html">Projects Supervision</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="terminal-body">
+      <div class="terminal-grid">
+
+        <!-- LEFT PANEL -->
+        <div class="terminal-panel">
+          <div class="col-md-3 col-xs-12" style="padding:0; float:none; width:auto;">
+            <div class="heading">Dr Adeem Ali Anwar</div>
+            <div class="row">
+              <div class="col-md-10 col-xs-4">
+                <img id="myImage" class="img-responsive" src="adeem_ai.png" alt="Avatar of Dr Adeem Ali Anwar"
+                  onclick="changeImage()">
+              </div>
+            </div>
+            <div class="info-text">
+              <i> PhD | MS | BS (Engr) </i><br>
+              <p class="university-color"> Higher Education Lecturer (IT) | Kent Institute, Sydney Campus</p>
+              Sydney, NSW, Australia<br>
+              <b>Email</b>: <a href="mailto:adeem.anwar@kent.edu.au">adeem.anwar@kent.edu.au</a><br>
+              <b>Email</b>: <a href="mailto:adeemali.anwar@mq.edu.au">adeemali.anwar@mq.edu.au</a><br>
+              <b>Email</b>: <a href="mailto:adeem.alianwar@gmail.com">adeem.alianwar@gmail.com</a><br>
+            </div>
+            <div class="link-list">
+              <a href="https://scholar.google.com.au/citations?user=SvilJWEAAAAJ&hl=en&oi=sra">Google Scholar</a>|
+              <a href="https://twitter.com/adeemanwer"> Twitter</a>|
+              <a href="https://www.linkedin.com/in/adeemali/"> LinkedIn</a>
+            </div>
+            <br>
+            <div class="link-list">
+              <i class="fa fa-globe" style="font-size:20px;color:#a6192e"></i>
+              <a href="https://www.australia.gov.au/"> Australia</a>|
+              <a href="https://u.ae/en"> UAE</a> |
+              <a href="https://pakistan.gov.pk/"> Pakistan</a>
+            </div>
+            <br>
+            <div class="link-list">
+              <i class="fa fa-language" style="font-size:20px;color:#a6192e"></i>
+              <a href="https://en.wikipedia.org/wiki/English_language">English</a>|
+              <a href="https://en.wikipedia.org/wiki/Urdu"> Urdu</a>|
+              <a href="https://en.wikipedia.org/wiki/Punjabi_language"> Punjabi</a>
+            </div>
+            <br>
+
+            <div class="link-list">
+              Evolutionary Algorithms
+              <div class="containerskills">
+                <div class="skills research1"></div>
+              </div>
+
+              Hyper-heuristics
+              <div class="containerskills">
+                <div class="skills research2"></div>
+              </div>
+
+              Combinatorial Optimization
+              <div class="containerskills">
+                <div class="skills research3"></div>
+              </div>
+
+              Multi- and Many-Objective Algorithms
+              <div class="containerskills">
+                <div class="skills research4"></div>
+              </div>
+
+              Reinforcement Learning
+              <div class="containerskills">
+                <div class="skills research5"></div>
+              </div>
+
+              Programming Languages
+              <div class="containerskills">
+                <div class="skills coding1"></div>
+              </div>
+
+              Web Development
+              <div class="containerskills">
+                <div class="skills coding2"></div>
+              </div>
+
+              Design
+              <div class="containerskills">
+                <div class="skills coding3"></div>
+              </div>
+
+              Communication Skills
+              <div class="containerskills">
+                <div class="skills skill1"></div>
+              </div>
+
+              Organization and Time Management
+              <div class="containerskills">
+                <div class="skills skill2"></div>
+              </div>
+
+              Analytical and Problem Solving
+              <div class="containerskills">
+                <div class="skills skill3"></div>
+              </div>
+            </div>
+            <br>
+
+            <div class="info-text">
+              <i class="university-color">#Publications:</i>
+              9<br>
+              <i class="university-color">#Citations:</i>
+              60+<br>
+              <i class="university-color">#Research Work/Projects:</i>
+              22<br>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT PANEL -->
+        <div class="terminal-panel">
+          <div class="col-md-9 col-xs-12" style="padding:0; float:none; width:auto;">
+            <div class="col" style="margin-top:3%; text-align:left;">
+              <h2 id="resources" style="color:#a6192e">Student Resource Hub</h2>
+              <p class="justified-text">
+                Explore the resources below. Use search and filters to quickly find what you need.
+              </p>
+
+              <div class="row resource-search">
+                <div class="col-sm-8">
+                  <input id="filter" class="form-control" placeholder="Search by title, category, or notes...">
+                </div>
+                <div class="col-sm-4">
+                  <select id="sort" class="form-control">
+                    <option value="newest">Newest first</option>
+                    <option value="oldest">Oldest first</option>
+                    <option value="title">Title A-Z</option>
+                  </select>
+                </div>
+              </div>
+
+              <div id="resource-list"></div>
+              <hr>
+              <p class="text-muted" style="color:var(--muted) !important;">Updated regularly</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <footer class="footer">
+        <div class="footer-content">
+          <p>Last Updated: 28-January-2026</p>
+          <ul class="social-icons">
+            <li><a href="https://scholar.google.com.au/citations?user=SvilJWEAAAAJ&hl=en&oi=sra"><i
+                  class="fa fa-google"></i></a></li>
+            <li><a href="https://twitter.com/adeemanwer"><i class="fa fa-twitter"></i></a></li>
+            <li><a href="https://www.linkedin.com/in/adeemali/"><i class="fa fa-linkedin-square"></i></a></li>
+            <br><br>
+            <div id="clock" class="clock">Clock is Loading</div>
+            <script src="clock.js"></script>
+          </ul>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <script>
+    function changeImage() {
+      var image = document.getElementById('myImage');
+
+      if (image.src.endsWith('gaza.jpg')) {
+        image.src = 'adeem_ai.png';
+      } else {
+        image.src = 'gaza.jpg';
+      }
+    }
+
+    function changeImage() {
+      var image = document.getElementById('myImage');
+
+      if (image.src.endsWith('gaza.jpg')) {
+        image.src = 'adeem_ai.png';
+      } else {
+        image.src = 'gaza.jpg';
+      }
+    }
+
+    const list = document.getElementById("resource-list");
+    const filterInput = document.getElementById("filter");
+    const sortSelect = document.getElementById("sort");
+
+    const resources = [
+      {
+        title: "OODP Weekly Labs",
+        link: "https://github.com/adeem-kent/oodp",
+        category: "Kent",
+        summary: "Lab exercises with solutions.",
+        created: 1
+      },
+      {
+        title: "DSAA Weekly Labs",
+        link: "https://github.com/adeem-kent/dsaa-kent",
+        category: "Kent",
+        summary: "Lab exercises with solutions.",
+        created: 2
+      },
+      {
+        title: "Capstone Projects",
+        link: "https://github.com/adeem-kent/data",
+        category: "Kent",
+        summary: "Capstone Projects and groups.",
+        created: 2
+      },
+      {
+        title: "WCOM1000 Lesson Codes",
+        link: "https://github.com/adeemali/MQC-codes",
+        category: "Macquarie University",
+        summary: "Lesson Codes.",
+        created: 3
+      },
+      {
+        title: "WCOM1010 Lesson Codes",
+        link: "https://github.com/adeemali/MQC-codes",
+        category: "Macquarie University",
+        summary: "Lesson Codes.",
+        created: 3
+      }
+    ];
+
+    const normalize = (value) => value.toLowerCase();
+
+    const renderResources = () => {
+      const query = normalize(filterInput.value.trim());
+      const sortMode = sortSelect.value;
+
+      const filtered = resources.filter((item) => {
+        if (!query) return true;
+        return (
+          normalize(item.title).includes(query) ||
+          normalize(item.category).includes(query) ||
+          normalize(item.summary || "").includes(query)
+        );
+      });
+
+      const sorted = filtered.slice().sort((a, b) => {
+        if (sortMode === "title") {
+          return a.title.localeCompare(b.title);
+        }
+        return sortMode === "oldest" ? a.created - b.created : b.created - a.created;
+      });
+
+      list.innerHTML = "";
+
+      if (!sorted.length) {
+        list.innerHTML = '<div class="resource-card">No resources match your search yet.</div>';
+        return;
+      }
+
+      sorted.forEach((item) => {
+        const card = document.createElement("div");
+        card.className = "resource-card";
+        card.innerHTML = `
+          <h4>${item.title}<span class="resource-tag">${item.category}</span></h4>
+          <div class="resource-meta">${item.summary || "No notes added yet."}</div>
+          <div class="resource-link">   <a href="#" onclick="openProtectedResource('${item.link}', '${item.category}')">Open resource  </a></div>
+        `;
+        list.appendChild(card);
+      });
+    };
+
+    filterInput.addEventListener("input", renderResources);
+    sortSelect.addEventListener("change", renderResources);
+
+    renderResources();
+
+    const CATEGORY_PASSWORDS = {
+      "Kent": "kent123",
+      "Macquarie University": "MQUNI123"
+    };
+
+    function openProtectedResource(url, category) {
+      const expectedPassword = CATEGORY_PASSWORDS[category];
+
+      if (!expectedPassword) {
+        alert("No password is set for this category.");
+        return;
+      }
+
+      const userPassword = prompt(
+        `Enter password for ${category} resources:`
+      );
+
+      if (userPassword === null) return;
+
+      if (userPassword === expectedPassword) {
+        window.open(url, "_blank", "noopener");
+      } else {
+        alert("Incorrect password. Access denied.");
+      }
+    }
+
+   
+  function toggleTheme() {
+    document.body.classList.toggle("light");
+
+    // save preference
+    if (document.body.classList.contains("light")) {
+      localStorage.setItem("theme", "light");
+    } else {
+      localStorage.setItem("theme", "dark");
+    }
+  }
+
+  // Load saved theme
+  window.onload = function () {
+    const saved = localStorage.getItem("theme");
+    if (saved === "light") {
+      document.body.classList.add("light");
+    }
+  };
+
+
+  </script>
+
+</body>
+
+</html>
